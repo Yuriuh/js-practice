@@ -1,6 +1,6 @@
 const types = Object.freeze({
-  'undefined': 'undefined',
-  'null': 'null',
+  'undefined': 'Undefined',
+  'null': 'Null',
   'object': 'Object',
   'array': 'Array',
   'string': 'String',
@@ -10,7 +10,7 @@ const types = Object.freeze({
   'symbol': 'Symbol',
 })
 
-const getType = v => (v === undefined ? 'undefined' : v === null ? 'null' : v.constructor.name)
+const getType = v => Object.prototype.toString.call(v)
 
 const isPlainObject = v => getType(v) === types.object
 

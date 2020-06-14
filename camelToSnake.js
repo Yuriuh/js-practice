@@ -12,7 +12,7 @@ const convertKeysToSnakeCase = obj => {
   if (isArray(obj)) {
     copy = []
     for (let i = 0; i < obj.length; i++) {
-      copy[i] = transformToUnderscoreKeys(obj[i])
+      copy[i] = convertKeysToSnakeCase(obj[i])
     }
     return copy
   }
@@ -21,7 +21,7 @@ const convertKeysToSnakeCase = obj => {
     for (const [key, value] of Object.entries(obj)) {
       const newKey = camelCaseToSnakeCase(key)
       if (isPlainObject(value) || isArray(value)) {
-        copy[newKey] = transformToUnderscoreKeys(value)
+        copy[newKey] = convertKeysToSnakeCase(value)
       } else {
         copy[newKey] = value
       }

@@ -6,7 +6,7 @@ const isPlainObject = val => !!val && typeof val === 'object' && val.constructor
 
 const isArray = val => Array.isArray(val)
 
-const transformToUnderscoreKeys = obj => {
+const convertKeysToSnakeCase = obj => {
   let copy
   if (isPrimitive(obj)) return obj
   if (isArray(obj)) {

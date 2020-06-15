@@ -10,7 +10,8 @@ const types = Object.freeze({
   'symbol': 'Symbol',
 })
 
-const getType = v => Object.prototype.toString.call(v)
+// Hack: "[object Object]" slice(8, -1) 能获取到 Object 这部分
+const getType = v => Object.prototype.toString.call(v).slice(8, -1)
 
 const isPlainObject = v => getType(v) === types.object
 

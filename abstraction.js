@@ -14,9 +14,9 @@ function starCube(number) {
   return cube
 }
 
-var star = () => '*'
+const star = '*'
 
-var starLine = (number) => {
+const starLine = (number) => {
   let line = []
   for (let i = 0; i < number; i++) {
     line.push(star())
@@ -24,7 +24,7 @@ var starLine = (number) => {
   return line
 }
 
-var starSquare = (number) => {
+const starSquare = (number) => {
   let square = []
   for (let i = 0; i < number; i++) {
     square.push(starLine(number))
@@ -32,7 +32,7 @@ var starSquare = (number) => {
   return square
 }
 
-var starCube = (number) => {
+const starCube = (number) => {
   let cube = []
   for (let i = 0; i < number; i++) {
     cube.push(starSquare(number))

@@ -1,0 +1,112 @@
+// 1. 手写函数防抖和函数节流
+
+// 2. 手写 AJAX
+// function ajaxGet(url, callback) {
+//   const xhr = new XMLHttpRequest()
+//   xhr.open('GET', url)
+//   xhr.addEventListener('load', e => {
+//     callback(e)
+//   })
+//   xhr.send()
+// }
+
+// ajaxGet('https://jsonplaceholder.typicode.com/todos/1', e => {
+//   console.log('e', e.target.responseText)
+// })
+
+// 3. this (请看博文)
+
+// 4. 闭包
+
+// var foo = (function() {
+//   _n = 0
+//   return {
+//     get() {
+//       return _n
+//     },
+//     set(v) {
+//       _n = v
+//     }
+//   }
+// })()
+
+// foo.get()
+
+// foo.set(123)
+
+// foo.get()
+
+// foo._n
+
+// 5. JSONP、CORS、跨域
+
+// 6. async / await 怎么使用
+
+// function sleep(duration) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(resolve, duration)
+//   })
+// }
+
+// void async function() {
+//   await sleep(3000)
+//   console.log('hehe') 
+// }()
+
+// 7. 深拷贝
+
+// function jsonDeepCopy(original) {
+//   return JSON.parse(JSON.stringify(original))
+// }
+
+// function deepCopy(original) {
+//   if (Array.isArray(original)) {
+//     const copy = []
+//     original.forEach((item, index) => {
+//       copy[index] = deepCopy(item)
+//     })
+//     return copy
+//   } else if (typeof original === 'object' && original !== null) {
+//     const copy = {}
+//     Object.keys(original).forEach(key => {
+//       const value = original[key]
+//       copy[key] = deepCopy(value)
+//     })
+//     return copy
+//   } else {
+//     return original
+//   }
+// }
+
+// 8. 不用 class 如何实现继承
+
+function inherit(target, origin) {
+  const F = function() {}
+  F.prototype = origin.prototype
+  target.prototype = new F()
+  target.prototype.constructor = target
+}
+
+
+function Person() {}
+
+Person.prototype.eat = function() {
+  console.log('Eat')
+}
+
+function Soldier(name) {
+  this.name = name
+}
+
+// 直接用对象
+var proto = {
+  __proto__: Person.prototype,
+  constructor: Soldier
+}
+
+Soldier.prototype = proto
+
+// 使用 inherit 函数
+inherit(Soldier, Person)
+
+var soldier = new Soldier('Yuriuh')

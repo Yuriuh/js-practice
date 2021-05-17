@@ -19,7 +19,7 @@ const star = '*'
 const starLine = (number) => {
   let line = []
   for (let i = 0; i < number; i++) {
-    line.push(star())
+    line.push(star)
   }
   return line
 }
